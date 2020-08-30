@@ -1,5 +1,14 @@
 import React from 'react';
+import { CssBaseline } from '@material-ui/core';
 import './App.css';
-import { Album } from './components/Albums';
+import { MainContent } from './components/screens/MainContent';
+import { Footer, Header } from './components/layout';
 
-export const App = () => <Album />;
+export const App = () => (
+  <>
+    <CssBaseline />
+    <Header />
+    <MainContent />
+    <Footer />
+  </>
+);
