@@ -16,7 +16,7 @@ export const Header = () => {
       <Toolbar>
         <CameraIcon className={classes.icon} />
         <Typography variant="h6" color="inherit" noWrap>
-          Album layout
+          Canna
         </Typography>
       </Toolbar>
     </AppBar>
