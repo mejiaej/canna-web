@@ -9,6 +9,8 @@ import {
   Button,
   makeStyles,
 } from '@material-ui/core';
+import { Link as RouterLink } from 'react-router-dom';
+import { CROP_PATH } from '../../config/paths';
 
 const useStyles = makeStyles(() => ({
   card: {
@@ -38,7 +40,7 @@ export const Card = ({
   imageTitle,
 }: CardProps) => {
   const classes = useStyles();
-
+  
   return (
     <Grid item xs={12} sm={6} md={4}>
       <MaterialCard className={classes.card}>
@@ -54,7 +56,7 @@ export const Card = ({
           <Typography>{description}</Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" color="primary">
+          <Button component={RouterLink} to={CROP_PATH} size="small" color="primary">
             View
           </Button>
           <Button size="small" color="primary">

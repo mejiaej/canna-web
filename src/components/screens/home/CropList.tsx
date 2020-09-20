@@ -23,8 +23,7 @@ export const CropList = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data: responseCrops } = await Axios.get(CROP_ENDPOINT);
-      console.log('data', responseCrops);
+      const { data: responseCrops } = await Axios.get(CROP_ENDPOINT);      
       setCrops(responseCrops);
     };
 
