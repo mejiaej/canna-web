@@ -10,7 +10,6 @@ import {
   makeStyles,
 } from '@material-ui/core';
 import { Link as RouterLink } from 'react-router-dom';
-import { CROP_PATH } from '../../config/paths';
 
 const useStyles = makeStyles(() => ({
   card: {
@@ -31,6 +30,7 @@ interface CardProps {
   description?: string;
   imageUrl: string;
   imageTitle: string;
+  linkUrl: string;
 }
 
 export const Card = ({
@@ -38,6 +38,7 @@ export const Card = ({
   description = '',
   imageUrl,
   imageTitle,
+  linkUrl,
 }: CardProps) => {
   const classes = useStyles();
   
@@ -56,7 +57,7 @@ export const Card = ({
           <Typography>{description}</Typography>
         </CardContent>
         <CardActions>
-          <Button component={RouterLink} to={CROP_PATH} size="small" color="primary">
+          <Button component={RouterLink} to={linkUrl} size="small" color="primary">
             View
           </Button>
           <Button size="small" color="primary">

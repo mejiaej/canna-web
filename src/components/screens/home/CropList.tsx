@@ -3,6 +3,7 @@ import Axios from 'axios';
 import { CROP_ENDPOINT } from '../../../config/end-points';
 import { Card } from '../../common/Card';
 import { Grid, Container, makeStyles, Theme } from '@material-ui/core';
+import { CROP_PATH } from '../../../config/paths';
 
 const useStyles = makeStyles((theme: Theme) => ({
   cardGrid: {
@@ -40,6 +41,7 @@ export const CropList = () => {
             description="This is a media card. You can use this section to describe the
           content."
             imageUrl={crop.imageUrl}
+            linkUrl={`${CROP_PATH}/${crop.id}`}
             imageTitle={crop.name}
           />
         ))}
