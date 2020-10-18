@@ -1,23 +1,44 @@
-import { makeStyles } from '@material-ui/core';
+import { makeStyles, Typography } from '@material-ui/core';
 import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getCropByIdEndpoint } from '../../../config/end-points';
 
 const useStyles = makeStyles((theme) => ({
-  crop: {
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    [theme.breakpoints.up('md')]: {
+      flexDirection: 'row',
+    },
+  },
+  cropImage: {
     height: 'auto',
     width: '100%',
-    [theme.breakpoints.up('md')]: { 
-      width: '60%',
+    [theme.breakpoints.up('md')]: {
+      width: '30%',
     },
-  }
+  },
+  descContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  cropDesc: {
+    margin: '0 10px',
+  },
 }));
+
+interface Crop {
+  name: string;
+  smallDesc: string;
+  description: string;
+  imageUrl: string;
+}
 
 export const Crop = () => {
   const classes = useStyles();
 
-  const [crop, setCrop] = useState(null);
+  const [crop, setCrop] = useState<Crop>();
   //@ts-ignore
   const { id } = useParams();
 
@@ -30,12 +51,27 @@ export const Crop = () => {
     fetchData();
   }, [id]);
 
-  if(!crop) {
+  if (!crop) {
     return null;
   }
 
   return (
-    //@ts-ignore
-    <img className={classes.crop} src={crop.imageUrl} alt="crop" />
+    <div className={classes.container}>
+      <div>
+        <img className={classes.cropImage} src={crop.imageUrl} alt="crop" />
+      </div>
+      <div className={classes.descContainer}>
+        <Typography align="center" variant="h6" gutterBottom>
+          {crop.name}
+        </Typography>
+        <Typography
+          className={classes.cropDesc}
+          align="justify"
+          variant="body1"
+        >
+          {crop.description}
+        </Typography>
+      </div>
+    </div>
   );
 };
