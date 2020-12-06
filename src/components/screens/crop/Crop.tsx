@@ -10,13 +10,19 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     [theme.breakpoints.up('md')]: {
       flexDirection: 'row',
+      padding: '5rem 0',
+    },
+  },
+  cropImageContainer: {
+    [theme.breakpoints.up('md')]: {
+      paddingLeft: '1rem',
     },
   },
   cropImage: {
     height: 'auto',
     width: '100%',
     [theme.breakpoints.up('md')]: {
-      width: '30%',
+      width: '35rem',
     },
   },
   descContainer: {
@@ -25,6 +31,9 @@ const useStyles = makeStyles((theme) => ({
   },
   cropDesc: {
     margin: '0 10px',
+    [theme.breakpoints.up('md')]: {
+      margin: '0 5rem',
+    },
   },
 }));
 
@@ -57,7 +66,7 @@ export const Crop = () => {
 
   return (
     <div className={classes.container}>
-      <div>
+      <div className={classes.cropImageContainer}>
         <img className={classes.cropImage} src={crop.imageUrl} alt="crop" />
       </div>
       <div className={classes.descContainer}>
