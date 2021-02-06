@@ -1,6 +1,7 @@
-import { makeStyles, Typography } from '@material-ui/core';
+import { Breadcrumbs, Link, makeStyles, Typography } from '@material-ui/core';
 import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import { useParams } from 'react-router-dom';
 import { getCropByIdEndpoint } from '../../../config/end-points';
 
@@ -10,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     [theme.breakpoints.up('md')]: {
       flexDirection: 'row',
-      padding: '5rem 0',
+      paddingBottom: '5rem',
     },
   },
   cropImageContainer: {
@@ -35,6 +36,10 @@ const useStyles = makeStyles((theme) => ({
       margin: '0 5rem',
     },
   },
+
+  breadCrumbs: {
+    margin: '2rem 1rem',
+  }
 }));
 
 interface Crop {
@@ -65,22 +70,32 @@ export const Crop = () => {
   }
 
   return (
-    <div className={classes.container}>
-      <div className={classes.cropImageContainer}>
-        <img className={classes.cropImage} src={crop.imageUrl} alt="crop" />
+    <>
+      <div className={classes.breadCrumbs}>
+        <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb">
+          <Link color="inherit" href="/">
+            Home
+          </Link>
+          <Typography color="textPrimary">{crop.name}</Typography>
+        </Breadcrumbs>
       </div>
-      <div className={classes.descContainer}>
-        <Typography align="center" variant="h6" gutterBottom>
-          {crop.name}
-        </Typography>
-        <Typography
-          className={classes.cropDesc}
-          align="justify"
-          variant="body1"
-        >
-          {crop.description}
-        </Typography>
+      <div className={classes.container}>
+        <div className={classes.cropImageContainer}>
+          <img className={classes.cropImage} src={crop.imageUrl} alt="crop" />
+        </div>
+        <div className={classes.descContainer}>
+          <Typography align="center" variant="h6" gutterBottom>
+            {crop.name}
+          </Typography>
+          <Typography
+            className={classes.cropDesc}
+            align="justify"
+            variant="body1"
+          >
+            {crop.description}
+          </Typography>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
