@@ -38,7 +38,10 @@ const useStyles = makeStyles((theme) => ({
   },
 
   breadCrumbs: {
-    margin: '2rem 1rem',
+    margin: '1rem 0.5rem',
+    [theme.breakpoints.up('md')]: {
+      margin: '2rem 1rem',
+    },
   }
 }));
 
